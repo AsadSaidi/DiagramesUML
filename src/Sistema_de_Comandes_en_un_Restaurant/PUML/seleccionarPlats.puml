@@ -11,5 +11,6 @@ B --> Co : Retorna llista de plats disponibles
 Co -> I : mostrarPlatsDisponibles
 C -> I : Selecciona els plats que vol
 I -> Co  : platsSeleccionats()
+Co --> ferComanda : Retorna una llista de plats seleccionats
 
 @enduml

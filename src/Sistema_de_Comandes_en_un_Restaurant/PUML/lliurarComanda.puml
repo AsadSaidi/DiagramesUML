@@ -1,0 +1,18 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+header "Sistema de Comandes (Lliurar comanda)"
+actor Repartidor AS R
+boundary Interficie AS I
+control "Controladors" AS Co
+entity BDD AS B
+
+Co -> B : Consultar comandes llistes per lliurar
+B --> Co : Retorna comandes llistes per lliurar
+Co -> I : mostrarComandesPerLliurar()
+R -> I : Selecciona comanda per lliurar
+I -> Co : lliurarComanda(comanda)
+Co -> B : Cambiar l'estat de la comanda
+B --> Co : Retorna la comanda modificada
+Co -> I : mostrarComandaModificada()
+
+@enduml
