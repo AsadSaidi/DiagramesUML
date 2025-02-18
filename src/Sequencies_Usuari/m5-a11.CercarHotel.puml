@@ -1,0 +1,15 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+header "Diagrama de sequencia (Cercar hotel)"
+
+actor Usuari
+boundary Interficie
+control Controladors
+entity BDD
+
+Usuari -> Interficie : Seleccionar hotel a buscar
+Interficie -> Controladors : cercarHotel(hotel)
+Controladors -> BDD : Consultar nom hotel
+BDD --> Controladors : Retorna existencia
+Controladors -> Interficie : Mostrar existencia
+@enduml

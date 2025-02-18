@@ -1,0 +1,24 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+header "Diagrama de sequencia (Gestionar Reserva)"
+
+actor Administrador
+boundary Interficie
+control Controladors
+entity BDD
+
+Administrador -> Interficie : Seleccionar reserva a gestionar
+Interficie -> Controladors : Envia la reserva que es vol gestionar
+Controladors -> BDD : Consultar reserva
+BDD --> Controladors : Retorna existencia de la reserva
+Controladors -> Interficie : Mostrar la reserva i les seves dades
+Interficie -> Administrador : Mostrar la reserva
+
+Administrador -> Interficie : Seleccionar opcio a gestionar de la reserva
+Interficie -> Controladors : Envia la gestio que es vol fer
+Controladors -> BDD : Gestiona la reserva
+BDD --> Controladors : Retorna l'estat actualitzat de la reserva
+Controladors -> Interficie : Mostrar la reserva i les seves dades
+Interficie -> Administrador : Mostrar la reserva
+
+@enduml

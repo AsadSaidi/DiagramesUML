@@ -1,0 +1,18 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+header "Diagrama de sequencia (Cancelar Reserva)"
+
+actor Usuari
+boundary Interficie
+control Controladors
+entity BDD
+
+Usuari -> Interficie : Seleccionar reserva a cancelar
+Interficie -> Controladors : Enviar nom de la reserva
+Controladors -> BDD : Consultar reserva
+BDD --> Controladors : Retorna existencia de la reserva
+Controladors -> BDD : Cancelar la reserva
+BDD --> Controladors : Retorna el nou estat de la reserva
+Controladors -> Interficie : Mostrar la reserva cancelada
+Interficie -> Usuari : Confirma cancelació de la reserva
+@enduml

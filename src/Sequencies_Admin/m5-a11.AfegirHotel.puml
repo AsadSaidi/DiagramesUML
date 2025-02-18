@@ -1,0 +1,19 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+header "Diagrama de sequencia (Gestionar Reserva)"
+
+actor Administrador
+boundary Interficie
+control Controladors
+entity BDD
+
+Administrador -> Interficie : Introdueix dades del hotel
+Interficie -> Controladors : Envia les dades del nou hotel
+Controladors -> BDD : Consultar si el hotel ja existeix
+BDD --> Controladors : Retorna existencia del hotel
+Controladors -> BDD : Inserta les dades del nou hotel
+BDD --> Controladors : Retorna l'estat de la BDD actualitzada
+Controladors -> Interficie : Mostrar l'hotel afegit
+Interficie -> Administrador : Mostrar l'hotel afegit
+
+@enduml

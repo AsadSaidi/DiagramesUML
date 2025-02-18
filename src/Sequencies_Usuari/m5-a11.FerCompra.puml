@@ -1,0 +1,21 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+header "Diagrama de sequencia (Fer Compra)"
+
+actor Usuari
+boundary Interficie
+control Controladors
+entity BDD
+
+Controladors -> BDD : Consultar productos disponibles
+BDD --> Controladors : Devuelve prodcutos disponibles
+Controladors -> Interficie : Mostrar productos disponibles
+Interficie -> Usuari : Mostrar prodcutos disponibles
+|||
+Usuari -> Interficie : Selecciona producte a Comprar
+Interficie -> Controladors : Envia el producte que es vol comprar
+Controladors -> BDD : Consultar nom hotel
+BDD --> Controladors : Retorna existencia
+Controladors -> Interficie : Mostrar existencia
+Interficie -> Usuari : Mostrar existencia
+@enduml

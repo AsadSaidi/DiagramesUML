@@ -1,0 +1,33 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+header "Sistema de Comandes (Fer comanda)"
+actor Client AS C
+boundary Interficie AS I
+control "Seleccionar Plats" AS S
+control Controlador AS Co
+entity BDD AS B
+
+C -> I : Fa la comanda
+I -> S : seleccionarPlats():llistaPlats
+S -> Co : Llista de plats
+I -> Co : obtenirDadesClient(client)
+Co -> B : Afegeix la comanda a BDD
+Co -> I : mostrarComanda()
+C -> I : Confirma la comanda
+I -> Co : propina():Boolean
+|||
+alt Donar propina?
+Co -> I: True - Donar propina
+I -> Co : sumaPropina(num)
+Co -> B : Cambiar el preu de la comanda
+B --> Co : Retorna la comanda modificada
+Co -> I : mostrarComanda()
+I -> Co : ferPagament()
+Co -> B : Cambia l'estat de la comanda a pagada
+else
+Co -> I: False - No donar propina
+I -> Co : ferPagament()
+Co -> B : Cambia l'estat de la comanda a pagada
+end
+|||
+@enduml

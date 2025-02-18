@@ -1,0 +1,15 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+header "Diagrama de sequencia (Enviar recordatori)"
+
+actor Usuari
+boundary Interficie
+control GestorDeCompra
+entity BDD
+
+GestorDeCompra -> BDD : Solicitar recordatori
+BDD --> GestorDeCompra : Retorna recordatori a enviar
+GestorDeCompra -> Interficie : Mostrar recordatori
+Interficie -> Usuari : Mostrar recordatori
+
+@enduml
